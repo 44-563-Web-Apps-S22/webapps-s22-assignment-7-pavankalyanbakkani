@@ -62,69 +62,65 @@
 
     <script>
         var ids=["0", "1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
-        var shakeCount=0
-        
-        var birdlLocation= Math.floor(Math.random() * 25);
-        
-        function check(position)
-        {
-            id= ids[position]
-            img_pos= document.getElementById(id)
-           if(position==birdLocation) 
-               img_pos.src="Abbott's babbler.jpg"
-           else    
-               img_pos.src="nest.jpg"
-    
-           shakeCount=shakeCount+1
-           document.getElementById("shakes").innerHTML = "Number of shakes is " + shakeCount;
-           document.getElementById("score").innerHTML="The score is "+ locationScore(position, birdLocation); 
-        }
-        
-        function reset(){
+        var shakeCount=0;
+      var birdlLocation= Math.floor(Math.random() * 25);
+    function check(position)
+       {
+         id=ids[position]
+         img_pos=document.getElementById(id)
+         if(position==birdlLocation)
+         img_pos.src="Abbott's babbler.jpg"
+         else
+         img_pos.src="nest.jpg"
+
+         shakeCount=shakeCount+1;
+         document.getElementById("shakes").innerHTML = "Number of shakes is " + shakeCount;
+       document.getElementById("score").innerHTML="The score is "+ locationScore(position, birdlLocation); 
+
+
+       }
+       function reset(){
             shakeCount = 0;
             document.getElementById("shakes").innerHTML = "Number of shakes is " + shakeCount;
             birdLocation = Math.floor(Math.random() * 25);
         }
+       function locationScore(pos1, pos2){
 
-    
-        function locationScore(pos1, pos2)
+        var row1, row2, col1, col2
+        var data=[[0,1,2,3,4], [5,6,7,8,9], [10,11,12,13,14], [15,16,17,18,19], [20,21,22,23,24]]
+        for(let P=0; P<data.length;P++)
         {
-            var row1, row2, col1, col2
-            var data=[[0,1,2,3,4], [5,6,7,8,9], [10,11,12,13,14], [15,16,17,18,19], [20,21,22,23,24]]
-            for(let P=0; P<data.length;P++)
+            for(let Q=0;Q<data[P].length;Q++)
             {
-                for(let Q=0;Q<data[P].length;Q++)
+                if(pos1==data[P][Q])
                 {
-                    if(pos1==data[P][Q])
-                    {
-                        row1=P
-                        col1=Q
-                    }
+                    row1=P
+                    col1=Q
                 }
             }
-    
-            for(let P=0; P<data.length;P++)
+        }
+        for(let P=0; P<data.length;P++)
+        {
+            for(let Q=0;Q<data[P].length;Q++)
             {
-                for(let Q=0;Q<data[P].length;Q++)
+                if(pos2==data[P][Q])
                 {
-                    if(pos2==data[P][Q])
-                    {
-                        row2=P
-                        col2=Q
-                    }
+                    row2=P
+                    col2=Q
                 }
             }
-    
-            if(row1==row2)
-             return 1
-            else if(col1==col2)
-              return 1
-            else if (Math.abs(pos1-pos2)==4 || Math.abs(pos1-pos2)==6)
-             return 1
-            else
-             return 0
         }
 
+        if(row1==row2)
+         return 1
+        else if(col1==col2)
+          return 1
+        else if (Math.abs(pos1-pos2)==4 || Math.abs(pos1-pos2)==6)
+         return 1
+        else
+         return 0
+
+       }
     </script>
 
 
