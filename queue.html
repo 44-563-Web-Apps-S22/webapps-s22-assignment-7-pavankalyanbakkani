@@ -44,6 +44,8 @@
     <br> <br>
     <button onclick="fetchItem()"> Fetch</button>
     <button onclick="zap()"> Zap values</button>
+    <button onclick="unique()">Unique</button>
+
 
 
 </body>
@@ -79,6 +81,20 @@
                 console.log(" getting rid of all the elements with that text");
             }
         }
+    }
+
+
+    function unique(){
+        var queueItems = document.getElementsByClassName("queue")
+		for(var i=0; i<queueItems.length; i++){
+			for(var j=i+1; j<queueItems.length; j++){
+                if(queueItems[i].innerHTML == queueItems[j].innerHTML){
+                    queueItems[j].remove()
+                    i--
+                    break
+                }
+            }
+		}
     }
 </script>
 
